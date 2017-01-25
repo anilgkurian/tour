@@ -4,27 +4,32 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 type Vertex struct {
-	X, Y float64
+	X, Y int
 }
 
-func (v Vertex) Abs() float64 {
-	return math.Sqrt(v.X*v.X + v.Y*v.Y)
+func (v Vertex) ValueMethod() {
+	v.X = v.X * 10
+	v.Y = v.Y * 10
 }
 
-func AbsFunc(v Vertex) float64 {
-	return math.Sqrt(v.X*v.X + v.Y*v.Y)
+func ValueFunction(v Vertex) {
+	v.X = v.X + 1
+	v.Y = v.Y + 1
 }
 
 func main() {
-	v := Vertex{3, 4}
-	fmt.Println(v.Abs())
-	fmt.Println(AbsFunc(v))
+	v1 := Vertex{3, 4}
+	v1.ValueMethod()
+	ValueFunction(v1)
+	fmt.Println(v1)
 
-	p := &Vertex{4, 3}
-	fmt.Println(p.Abs())
-	fmt.Println(AbsFunc(*p))
+
+	v2 := &Vertex{5, 6}
+	v2.ValueMethod()
+	ValueFunction(*v2)
+	fmt.Println(v2)
+	
 }
